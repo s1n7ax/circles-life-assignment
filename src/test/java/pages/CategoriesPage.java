@@ -17,10 +17,10 @@ public class CategoriesPage implements PageUtil {
 	private final WebDriver driver;
 
 	@FindBy(xpath = "//span[.='Categories']/parent::a")
-	public WebElement dd_Categories;
+	private WebElement ddCategories;
 
 	@FindBy(xpath = "//span[.='Categories']/parent::a/following-sibling::*[1]//div[contains(@class, 'nav-menu-dropdown')]")
-	public WebElement ele_CategoriesDDContainer;
+	private WebElement eleCategoriesDDContainer;
 
 	private final By commonActiveCategoryContainer = By.xpath(
 			".//ul[contains(@class, 'site-menu-root') or (contains(@class, 'site-menu-') and contains(@class, '-active'))]");
@@ -37,13 +37,13 @@ public class CategoriesPage implements PageUtil {
 	 */
 	public void openCategory() {
 		final var action = new Actions(driver);
-		action.moveToElement(dd_Categories).build().perform();
+		action.moveToElement(ddCategories).build().perform();
 	}
 
 	public void goToMenu(final String... menus) {
 
 		final var action = new Actions(driver);
-		var parent = ele_CategoriesDDContainer;
+		var parent = eleCategoriesDDContainer;
 		WebElement lastItem = null;
 
 		for (final String category : menus) {
@@ -67,7 +67,7 @@ public class CategoriesPage implements PageUtil {
 	public void validateCategories(final String[] expecectedCategories, final String... categoryNavigation) {
 
 		final var action = new Actions(driver);
-		var parent = ele_CategoriesDDContainer;
+		var parent = eleCategoriesDDContainer;
 		WebElement lastItem = null;
 
 		for (final String category : categoryNavigation) {

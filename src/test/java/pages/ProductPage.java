@@ -13,10 +13,10 @@ import org.testng.Assert;
 public class ProductPage {
 
 	@FindBy(xpath = "//ul[contains(@class, 'breadcrumb')]")
-	public WebElement ele_Breadcrumb;
+	private WebElement eleBreadcrumb;
 
 	@FindBy(tagName = "h1")
-	public WebElement lbl_Header;
+	private WebElement lblHeader;
 
 	public ProductPage(final WebDriver driver) {
 
@@ -26,13 +26,13 @@ public class ProductPage {
 
 	public String getProductTitle() {
 
-		return lbl_Header.getText();
+		return lblHeader.getText();
 
 	}
 
 	public String[] getBreadcrumb() {
 
-		return ele_Breadcrumb.findElements(By.tagName("li")).stream().map(ele -> ele.getText()).toArray(String[]::new);
+		return eleBreadcrumb.findElements(By.tagName("li")).stream().map(ele -> ele.getText()).toArray(String[]::new);
 
 	}
 
