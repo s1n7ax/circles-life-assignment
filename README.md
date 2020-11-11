@@ -3,6 +3,16 @@ NOTE: I have separated the assignment in to two repositories so anyone can clone
 * `silenium` contains core of the automation framework. 
 * `circles-life-assignment` contains `silenium` + assignment tests.
 
+## [Demo video:](https://youtu.be/luS0T0E0dsU)
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=luS0T0E0dsU" target="_blank">
+	<img 
+	src="http://img.youtube.com/vi/luS0T0E0dsU/0.jpg" 
+	alt="[DEMO] Circles Life Assignment | Service & UI Automation" 
+	width="560" height="315" 
+	border="0"/>
+</a>
+
 # silenium
 
 A simple framework where you can start working on your tests right away.
