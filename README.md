@@ -1,3 +1,8 @@
+# circles-life-assignment
+NOTE: I have separated the assignment in to two repositories so anyone can clone core of the framework and start working.
+* `silenium` contains core of the automation framework. 
+* `circles-life-assignment` contains `silenium` + assignment tests.
+
 # silenium
 
 A simple framework where you can start working on your tests right away.
@@ -20,7 +25,5 @@ A simple framework where you can start working on your tests right away.
 * Clone or download the project
 * Import the project to Eclipse as a Gradle project
 * Right click on the project and click on Gradle -> Refresh Gradle Project
-* Open `GoogleSearchTests.java` class
-* Right click -> Run As -> TestNG Test
-
-You are welcome! :D
+* Right click on `circles-life-assignment-test-plan.xml` test plan
+* Run As -> TestNG Test
