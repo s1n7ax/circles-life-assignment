@@ -7,7 +7,7 @@ A simple framework where you can start working on your tests right away.
 * Parallel execution 
 * Supports Linux & Windows (You can override or extend supported platforms easily)
 * Supports Chrome & Firefox (You can override or extend supported browsers easily)
-* Do you want to run different test cases on different browsers using different driver versions concurrently? You can do that (Guide will be updated soon... :))
+* Do you want to run different test cases on different browsers using different driver versions, concurrently? You can do that (Guide will be updated soon... :))
 
 ## Prerequisite
 * Java 10 or higher (some Java 10 features are being used)
