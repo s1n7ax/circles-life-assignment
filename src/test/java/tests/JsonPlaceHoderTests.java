@@ -23,7 +23,7 @@ public class JsonPlaceHoderTests {
 	private URIBuilder uriBuilder;
 
 	@BeforeMethod
-	public void init() {
+	public synchronized void init() {
 		uriBuilder = new URIBuilder().setScheme("https").setHost("jsonplaceholder.typicode.com");
 	}
 
