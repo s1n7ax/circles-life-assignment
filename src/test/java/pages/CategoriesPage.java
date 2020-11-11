@@ -8,11 +8,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import util.Locator;
+import util.PageUtil;
 
 /**
  * CategoriesPage
  */
-public class CategoriesPage {
+public class CategoriesPage implements PageUtil {
 	private final WebDriver driver;
 
 	@FindBy(xpath = "//span[.='Categories']/parent::a")
@@ -54,7 +55,12 @@ public class CategoriesPage {
 
 		}
 
-		lastItem.click();
+		final var lastItemFinal = lastItem;
+
+		getWait(driver).until(driver -> {
+			lastItemFinal.click();
+			return true;
+		});
 
 	}
 
