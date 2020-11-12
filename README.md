@@ -34,6 +34,7 @@ A simple framework where you can start working on your tests right away.
 # Running
 * Clone or download the project
 * Import the project to Eclipse as a Gradle project
+* Open command prompt in the project file and run `>.\gradlew.bat cleanEclipse eclipse` to configure eclipse settings
 * Right click on the project and click on Gradle -> Refresh Gradle Project
 * Right click on `circles-life-assignment-test-plan.xml` test plan
 * Run As -> TestNG Test
