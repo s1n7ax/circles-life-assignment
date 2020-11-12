@@ -40,18 +40,6 @@ public abstract class WebAutomationBase implements WebDriverManagerFactoryConfig
 		return new DefaultWebDriverFactory();
 	}
 
-	@Parameters({ "browser", "base.url", "timeout.implicit" })
-	@BeforeSuite()
-	protected synchronized final void defaultBeforeSuite(@Optional("chrome") final String browser,
-			@Optional() final String baseURL, @Optional("10000") final String implicitTimeout,
-			final ITestContext context) {
-
-		context.setAttribute("silenium.browser", browser);
-		context.setAttribute("silenium.base.url", baseURL);
-		context.setAttribute("silenium.timeout.implicit", Long.parseLong(implicitTimeout));
-
-	}
-
 	@Parameters({ "browser", "base.url", "timeout.implicit", "silenium.timeout.pageload", "silenium.timeout.script" })
 	@BeforeMethod()
 	protected synchronized final void defaultBeforeTest1(@Optional final String browser, @Optional final String baseURL,
