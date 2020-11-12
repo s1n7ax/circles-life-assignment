@@ -24,8 +24,8 @@ public class JsonPlaceHolderDataProvider {
 				new PostModel(4, "post 4", "post 4 body updated", 4) };
 	}
 
-	@DataProvider(name = "post-retrive-data")
-	public Integer[] getPostRetriveData() {
+	@DataProvider(name = "post-retrieve-data")
+	public Integer[] getPostRetrieveData() {
 		return new Integer[] { 1, 2, 3, 4 };
 	}
 
@@ -34,7 +34,7 @@ public class JsonPlaceHolderDataProvider {
 		return new Integer[] { 1, 2, 3, 4 };
 	}
 
-	@DataProvider(name = "comment-retrive-data")
+	@DataProvider(name = "comment-retrieve-data")
 	public Integer[] getCommentRetrivalData() {
 		return new Integer[] { 1, 2, 3, 4 };
 	}

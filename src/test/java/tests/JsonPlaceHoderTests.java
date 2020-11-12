@@ -27,7 +27,7 @@ public class JsonPlaceHoderTests {
 		uriBuilder = new URIBuilder().setScheme("https").setHost("jsonplaceholder.typicode.com");
 	}
 
-	@Test(dataProvider = "post-retrive-data", dataProviderClass = JsonPlaceHolderDataProvider.class)
+	@Test(dataProvider = "post-retrieve-data", dataProviderClass = JsonPlaceHolderDataProvider.class)
 	public void verifyPostRetrival(final int id) {
 
 		final var response = given().get(uriBuilder.setPath("/posts/" + id).toString());
@@ -71,7 +71,7 @@ public class JsonPlaceHoderTests {
 
 	}
 
-	@Test(dataProvider = "comment-retrive-data", dataProviderClass = JsonPlaceHolderDataProvider.class)
+	@Test(dataProvider = "comment-retrieve-data", dataProviderClass = JsonPlaceHolderDataProvider.class)
 	public void verifyCommentRetrival(final int id) {
 
 		final var response = given().when()
