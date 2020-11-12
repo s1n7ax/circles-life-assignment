@@ -20,16 +20,13 @@ import models.PostModel;
  * JsonPlaceHoderTests
  */
 public class JsonPlaceHoderTests {
-	private URIBuilder uriBuilder;
-
-	@BeforeMethod
-	public synchronized void init() {
-		uriBuilder = new URIBuilder().setScheme("https").setHost("jsonplaceholder.typicode.com");
-	}
+	private final String SCHEME = "https";
+	private final String HOST = "jsonplaceholder.typicode.com";
 
 	@Test(dataProvider = "post-retrieve-data", dataProviderClass = JsonPlaceHolderDataProvider.class)
 	public void verifyPostRetrival(final int id) {
 
+		var uriBuilder = new URIBuilder().setScheme(SCHEME).setHost(HOST);
 		final var response = given().get(uriBuilder.setPath("/posts/" + id).toString());
 
 		response.then().assertThat().statusCode(200);
@@ -40,6 +37,7 @@ public class JsonPlaceHoderTests {
 	public void verifyPostCreation(final PostModel model) {
 		final var json = new Gson().toJson(model);
 
+		var uriBuilder = new URIBuilder().setScheme(SCHEME).setHost(HOST);
 		final var response = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(json).when()
 				.post(uriBuilder.setPath("/posts").toString());
 
@@ -53,6 +51,7 @@ public class JsonPlaceHoderTests {
 
 		final var json = new GsonBuilder().excludeFieldsWithModifiers().create().toJson(model);
 
+		var uriBuilder = new URIBuilder().setScheme(SCHEME).setHost(HOST);
 		final var response = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(json).when()
 				.put(uriBuilder.setPath("/posts/" + model.getId()).toString());
 
@@ -65,6 +64,7 @@ public class JsonPlaceHoderTests {
 	@Test(dataProvider = "post-delete-data", dataProviderClass = JsonPlaceHolderDataProvider.class)
 	public void verifyPostDeletion(final int id) {
 
+		var uriBuilder = new URIBuilder().setScheme(SCHEME).setHost(HOST);
 		final var response = given().delete(uriBuilder.setPath("/posts/" + id).toString());
 
 		response.then().assertThat().statusCode(200);
@@ -74,6 +74,7 @@ public class JsonPlaceHoderTests {
 	@Test(dataProvider = "comment-retrieve-data", dataProviderClass = JsonPlaceHolderDataProvider.class)
 	public void verifyCommentRetrival(final int id) {
 
+		var uriBuilder = new URIBuilder().setScheme(SCHEME).setHost(HOST);
 		final var response = given().when()
 				.get(uriBuilder.setPath("/comments").addParameter("postId", String.valueOf(id)).toString());
 
@@ -86,6 +87,7 @@ public class JsonPlaceHoderTests {
 	@Test(dataProvider = "not-existing-data", dataProviderClass = JsonPlaceHolderDataProvider.class)
 	public void verifyNotExistingResourceAccess(final int id) {
 
+		var uriBuilder = new URIBuilder().setScheme(SCHEME).setHost(HOST);
 		final var response = given().when().get(uriBuilder.setPath("/posts/" + id).toString());
 
 		response.then().assertThat().statusCode(404);
@@ -95,6 +97,7 @@ public class JsonPlaceHoderTests {
 	@Test(dataProvider = "malformed-data", dataProviderClass = JsonPlaceHolderDataProvider.class)
 	public void verifyMalformedDataCreation(final String json) {
 
+		var uriBuilder = new URIBuilder().setScheme(SCHEME).setHost(HOST);
 		final var response = given().contentType(ContentType.JSON).body(json).when()
 				.post(uriBuilder.setPath("/posts").toString());
 
