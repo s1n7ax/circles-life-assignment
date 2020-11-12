@@ -23,6 +23,8 @@
 hs_err_pid*
 
 .gradle
+# allow gradle wrapper jar
+!gradle/wrapper/gradle-wrapper.jar
 
 build
 
