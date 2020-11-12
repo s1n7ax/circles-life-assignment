@@ -28,6 +28,13 @@ build
 
 test-output
 
-
+# classpath and project files contains platform specific data
+# for example absolute path to project
+# removing them from the project
 .classpath
 .project
+
+# ignore all eclipse settings except code format configuration
+.settings/*
+!.settings/org.eclipse.jdt.ui.prefs
+
