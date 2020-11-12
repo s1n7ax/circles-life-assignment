@@ -128,10 +128,13 @@ public abstract class WebAutomationBase implements WebDriverManagerFactoryConfig
 
 	private synchronized final WebDriver getWebDriver(final String browser) {
 
-		final var driverManager = getWebDriverManagerFactory().getManager(browser);
+		var driverManager = driverManagerMap.get(browser);
 
-		driverManager.startService();
-		driverManagerMap.put(browser, driverManager);
+		if (driverManager == null) {
+			driverManager = getWebDriverManagerFactory().getManager(browser);
+			driverManager.startService();
+			driverManagerMap.put(browser, driverManager);
+		}
 
 		return getWebDriverFactory().getDriver(browser);
 	}
