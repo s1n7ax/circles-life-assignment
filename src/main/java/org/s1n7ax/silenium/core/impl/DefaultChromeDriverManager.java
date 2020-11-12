@@ -45,24 +45,25 @@ public class DefaultChromeDriverManager implements WebDriverManager {
 
 		String filePath;
 
-		switch (os) {
-		case "linux": {
+		if (os.contains("linux"))
 			filePath = "drivers/linux/chromedriver";
-		}
-			break;
-		case "windows": {
+		else if (os.contains("windows"))
 			filePath = "drivers/windows/chromedriver.exe";
-		}
-			break;
-		default:
+		else
 			throw new NoSuchDriverException("web driver is not available for current os :: " + os);
-		}
 
 		try {
-			return new File(classloader.getResource(filePath).getFile());
+
+			final var file = new File(classloader.getResource(filePath).getFile());
+			/**
+			 * @TODO - on windows, ChromeDriverService can't find driver unless you set the
+			 *       particular environment variable This need to be checked
+			 */
+			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+			return file;
 		} catch (final NullPointerException e) {
 			e.printStackTrace();
-			throw new NoSuchDriverException("web driver is not available in path :: " + filePath);
+			throw new NoSuchDriverException("web driver executable is not available in path :: " + filePath);
 		}
 	}
 
